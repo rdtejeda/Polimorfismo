@@ -14,9 +14,6 @@ namespace Polimorfismo
         public Colores color;
 
         #endregion
-
-        #region Propiedades
-
         
 
         #region Constructor
@@ -27,25 +24,32 @@ namespace Polimorfismo
             this.color = miColor;
         }
 
+        public override string TiempoUso// => throw new NotImplementedException();
+        {
+            get
+            {
+                return "seusa desde siempre";
+            }
+        }
         #endregion
-
-        #region Métodos
-        public  void Avanzar()
+        public override void Avanzar()
         {
             base.Avanzar();
             Console.WriteLine("El auto avanza a {0}", this._velocidadMaxima);
         }
-
-        
-
-
+        //o marco la clase a
+        //abstracta o implementpo el metodo 
+        public override void Frenar()
+        {
+            Console.WriteLine("Tiro de las riendas");
+        }
 
         public override string ToString()
         {
             System.Text.StringBuilder sb = new StringBuilder();
 
             //INVOCO AL TOSTRING() DE LA CLASE BASE
-            sb.AppendLine(base.Mostrar());
+            sb.AppendLine(base.ToString());
 
             sb.AppendLine("En la clase Caballo...");
             sb.Append("Raza: ");

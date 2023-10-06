@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,9 +14,7 @@ namespace Polimorfismo
         public string modelo;
         public int cantidadVentanas;
 
-        #endregion
-
-        
+        #endregion        
 
         #region Constructor
 
@@ -25,15 +24,22 @@ namespace Polimorfismo
             this.modelo = modelo;
         }
 
+        public override string TiempoUso => "Dedes mediados del siblo XX";//throw new NotImplementedException();
+
         #endregion
 
         #region Métodos
-        public void Avanzar()
+        public override void Avanzar()
         {
-            base.Avanzar();
+            //base.Avanzar();
             Console.WriteLine("El auto avanza a {0}", this._velocidadMaxima);
         }
-  
+
+        public override void Frenar()
+        {
+            Console.WriteLine("El cohete sede a la gravedad");
+        }
+
 
         #endregion
 
@@ -43,8 +49,7 @@ namespace Polimorfismo
         {
             System.Text.StringBuilder sb = new StringBuilder();
 
-          
-          
+            base.ToString();          
 
             sb.AppendLine("En la clase Cohete...");
 

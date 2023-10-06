@@ -17,7 +17,6 @@ namespace Polimorfismo
 
         #region Propiedades
 
-
         #endregion
 
         #region Constructor
@@ -29,28 +28,42 @@ namespace Polimorfismo
 
         #endregion
 
-        #region Métodos
-        public void Avanzar()
+
+        public override string TiempoUso// => throw new NotImplementedException();
         {
-            base.Avanzar();
-            Console.WriteLine("El auto avanza a {0}", this._velocidadMaxima);
+            get
+            {
+                return "Se usa desde 1886";
+            }
         }
 
-        public  void Frenar()
+        #region Métodos
+        public override void Avanzar()//lo debo overraider
+            //no ees el mismo metodo que en la base
+            //para que haya polimorfismno debemo definir el metodo
+            //de la clase base virtrual
+            //para poder sobreescribirlo
+            //lo puedo redefinir totalmentye o llamar la base y agregar
         {
+            base.Avanzar(); //llamo a la base llamada explicita
+            Console.WriteLine("El auto avanza a {0}", this._velocidadMaxima);
+        }
+        //sobreesdcrobo el abstrato de la basek
+        public override void Frenar()
+        {
+            //base.Frenar(); NO FUNCIONA PPRQUE ES ABSTRACTO
+            //no me condiciona la base O
             Console.WriteLine("reduzco velocidad pisando el freno...");
         }
 
         #endregion
-
-    
-
-        public string mostrar()
+        public override string ToString()
         {
+            return base.ToString();
             System.Text.StringBuilder sb = new StringBuilder();
 
             //INVOCO AL TOSTRING() DE LA CLASE BASE
-            sb.AppendLine(base.Mostrar());
+            sb.AppendLine(base.ToString());
 
             sb.AppendLine("En la clase Auto...");
             sb.Append("Cantidad de ruedas: ");
@@ -58,8 +71,23 @@ namespace Polimorfismo
 
             return sb.ToString();
         }
+        public void TocarBocina()
+        {
+            Console.WriteLine("Tututu");
+        }
+        //public string mostrar()
+        //{
+        //    System.Text.StringBuilder sb = new StringBuilder();
 
- 
+        //    //INVOCO AL TOSTRING() DE LA CLASE BASE
+        //    sb.AppendLine(base.Mostrar());
+
+        //    sb.AppendLine("En la clase Auto...");
+        //    sb.Append("Cantidad de ruedas: ");
+        //    sb.AppendLine(this.cantidadRuedas.ToString());
+
+        //    return sb.ToString();
+        //} 
     }
 }
 
